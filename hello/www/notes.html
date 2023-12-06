@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="notes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="img/th.jfif" type="image/png">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <span>Welcome on Notes</span>
+            </div>
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="#">Paramètres</a></li>
+                <button id="hide_status_bar">Hide Bar</button>
+                <button id="show_status_bar">Show Bar</button>
+            </ul>
+            
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Notes App</h1>
+        <div>
+            <textarea id="noteInput" placeholder="Entrez votre note ici..."></textarea>
+            <button onclick="addNote()">Ajouter une note</button>
+        </div>
+        <ul id="notesList"></ul>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <p>Contact: <a href="mailto:nmace44@gmail.com">nmace44@gmail.com</a></p>
+            </div>
+            <div class="copyright-info">
+                <p>&copy; NicoMace, Inc 2023. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="notes.js"></script>
+    <script src="cordova.js"></script>
+    
+    <script>
+        $('#hide-status-bar').on('click', function () {
+            StatusBar.hide()
+        })
+        $('#show-status-bar').on('click', function () {
+            StatusBar.show()
+        })
+    </script>
+
+</body>
+</html>
