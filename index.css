@@ -20,18 +20,18 @@ body {
     background-color: #fff;
     animation: snowfall 10s infinite linear, drift 5s infinite alternate ease-in-out;
     opacity: 0.7;
-    /* Ajoutez d'autres propriétés CSS ici */
+    border-radius: 2px;
 }
 
 @keyframes snowfall {
     to {
-        transform: translateY(120vh) translateX(calc(100vw * (0.5 - random()))); /* Ajuste la distance et la dispersion horizontale */
+        transform: translateY(100vh); /* Ajuste la distance vers laquelle les flocons tombent */
     }
 }
 
 @keyframes drift {
     to {
-        transform: translateX(5px);
+        transform: translateX(10px); /* Ajuste la distance et la dispersion horizontale */
     }
 }
 

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const snowfallContainer = document.getElementById("snowfall-container");
 
     // Nombre de flocons à générer
-    const numberOfSnowflakes = 50;
+    const numberOfSnowflakes = 150;
 
     for (let i = 0; i < numberOfSnowflakes; i++) {
         const snowflake = document.createElement("div");
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         snowflake.style.top = Math.random() * 100 + "vh";
 
         // Délai de démarrage aléatoire
-        snowflake.style.animationDelay = Math.random() * 5 + "s";
+        snowflake.style.animationDelay = Math.random() * 2.5 + "s";
 
         snowfallContainer.appendChild(snowflake);
     }
