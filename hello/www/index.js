@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    document.body.style.paddingTop = (window.innerHeight / 11) + 'px';
     const snowfallContainer = document.getElementById("snowfall-container");
 
     // Nombre de flocons à générer
@@ -22,5 +23,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 window.addEventListener('resize', function() {
-    document.body.style.paddingTop = (window.innerHeight / 10) + 'px'; // Ajustez la valeur selon vos besoins
+    document.body.style.paddingTop = (window.innerHeight / 11) + 'px'; // Ajustez la valeur selon vos besoins
 });

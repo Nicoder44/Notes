@@ -2,6 +2,7 @@ const body = document.body;
 const container = document.container;
 
 document.addEventListener("DOMContentLoaded", function () {
+    document.body.style.paddingTop = (window.innerHeight / 11) + 'px';
     // Charger les notes existantes depuis le localStorage
     loadNotes();
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes App</title>
@@ -26,7 +25,10 @@
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="notes.html">Notes</a></li>
                 <li><a href="#">Paramètres</a></li>
+                <button id="hide_status_bar">Hide Bar</button>
+                <button id="show_status_bar">Show Bar</button>
             </ul>
+            
         </div>
     </nav>
 
@@ -50,8 +52,18 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="notes.js"></script>
     <script src="cordova.js"></script>
+    
+    <script>
+        $('#hide-status-bar').on('click', function () {
+            StatusBar.hide()
+        })
+        $('#show-status-bar').on('click', function () {
+            StatusBar.show()
+        })
+    </script>
 
 </body>
 </html>
