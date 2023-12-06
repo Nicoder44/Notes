@@ -1,6 +1,29 @@
+const body = document.body;
+const container = document.container;
+
 document.addEventListener("DOMContentLoaded", function () {
     // Charger les notes existantes depuis le localStorage
     loadNotes();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+    menuToggle.addEventListener('click', function () {
+        navList.classList.toggle('show');
+    });
+
+    darkModeToggle.addEventListener('click', function () {
+        body.classList.toggle('dark-mode');
+        container.classList.toggle('dark-mode');
+        
+        // Sauvegarder l'état du mode sombre dans le localStorage
+        saveDarkModeState(body.classList.contains('dark-mode'));
+    });
+
+    if (getDarkModeState()) {
+        body.classList.add('dark-mode');
+    }
 });
 
 function addNote() {
@@ -11,6 +34,24 @@ function addNote() {
         // Créer un élément li pour la nouvelle note
         var noteElement = document.createElement("li");
         noteElement.textContent = noteText;
+
+        noteElement.classList.add('note-item');
+
+        var editIcon = document.createElement("i");
+        editIcon.className = "fas fa-edit edit-icon";
+        editIcon.addEventListener("click", function () {
+            editNote(this.parentElement);
+        });
+
+        var deleteIcon = document.createElement("i");
+            deleteIcon.className = "fas fa-trash delete-icon";
+            deleteIcon.setAttribute("title", "Supprimer la note");
+            deleteIcon.addEventListener("click", function () {
+                deleteNote(this.parentElement);
+            });
+
+        noteElement.appendChild(editIcon);
+        noteElement.appendChild(deleteIcon);
 
         // Ajouter la nouvelle note à la liste
         document.getElementById("notesList").appendChild(noteElement);
@@ -24,6 +65,63 @@ function addNote() {
     else{
         console.log("It didn't worked...")
     }
+}
+
+function editNote(noteElement) {
+    // Ajouter ici la logique pour éditer la note
+    // Par exemple, tu pourrais ouvrir une boîte de dialogue modale
+    var updatedText = prompt("Modifier la note :", noteElement.textContent);
+
+    if (updatedText !== null) {
+        // Créer à nouveau l'élément de texte pour la note
+        noteElement.textContent = updatedText;
+
+        noteElement.classList.add('note-item');
+
+        // Ajouter des icônes pour éditer et supprimer
+        var editIcon = document.createElement("i");
+        editIcon.className = "fas fa-edit edit-icon";
+        editIcon.setAttribute("title", "Éditer la note");
+        editIcon.addEventListener("click", function () {
+            editNote(noteElement);
+        });
+
+        var deleteIcon = document.createElement("i");
+        deleteIcon.className = "fas fa-trash delete-icon";
+        deleteIcon.setAttribute("title", "Supprimer la note");
+        deleteIcon.addEventListener("click", function () {
+            deleteNote(noteElement);
+        });
+
+        // Ajouter les icônes à la note
+        noteElement.appendChild(editIcon);
+        noteElement.appendChild(deleteIcon);
+
+        // Ajouter à nouveau la note à la liste parente
+        parentList.appendChild(noteElement);
+
+        // Sauvegarder les notes mises à jour
+        saveNotes();
+    }
+}
+
+function deleteNote(noteElement) {
+    // Ajouter ici la logique pour supprimer la note
+    // Par exemple, tu pourrais demander une confirmation à l'utilisateur
+    if (confirm("Voulez-vous vraiment supprimer cette note ?")) {
+        noteElement.remove();
+        saveNotes();
+    }
+}
+
+function saveDarkModeState(isDarkMode) {
+    // Sauvegarder l'état du mode sombre dans le localStorage
+    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
+}
+
+function getDarkModeState() {
+    // Récupérer l'état du mode sombre depuis le localStorage
+    return JSON.parse(localStorage.getItem("darkMode")) || false;
 }
 
 function saveNotes() {
@@ -48,10 +146,34 @@ function loadNotes() {
 
     // Vérifier s'il y a des notes à charger
     if (notesArray) {
+        // Réinitialiser le contenu de la liste
+        document.getElementById("notesList").innerHTML = "";
+
         // Parcourir le tableau et créer un élément li pour chaque note
         for (var i = 0; i < notesArray.length; i++) {
             var noteElement = document.createElement("li");
             noteElement.textContent = notesArray[i];
+
+            noteElement.classList.add('note-item');
+
+            // Ajouter des icônes pour éditer et supprimer
+            var editIcon = document.createElement("i");
+            editIcon.className = "fas fa-edit edit-icon";
+            editIcon.setAttribute("title", "Éditer la note");
+            editIcon.addEventListener("click", function () {
+                editNote(this.parentElement);
+            });
+
+            var deleteIcon = document.createElement("i");
+            deleteIcon.className = "fas fa-trash delete-icon";
+            deleteIcon.setAttribute("title", "Supprimer la note");
+            deleteIcon.addEventListener("click", function () {
+                deleteNote(this.parentElement);
+            });
+
+            // Ajouter les icônes à la note
+            noteElement.appendChild(editIcon);
+            noteElement.appendChild(deleteIcon);
 
             // Ajouter la note à la liste
             document.getElementById("notesList").appendChild(noteElement);
