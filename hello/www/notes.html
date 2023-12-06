@@ -4,8 +4,9 @@
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="notes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="img/th.jfif" type="image/png">
 </head>
 <body>
@@ -28,12 +29,29 @@
             </ul>
         </div>
     </nav>
-    <div class="snowfall" id="snowfall-container"></div>
-    <div class="content">
-    <div class="content">
-        <h1>Notes</h1>
-        <p class="powered-by">powered by NicoMace</p>
+
+    <div class="container">
+        <h1>Notes App</h1>
+        <div>
+            <textarea id="noteInput" placeholder="Entrez votre note ici..."></textarea>
+            <button onclick="addNote()">Ajouter une note</button>
+        </div>
+        <ul id="notesList"></ul>
     </div>
-    <script src="index.js"></script>
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <p>Contact: <a href="mailto:nmace44@gmail.com">nmace44@gmail.com</a></p>
+            </div>
+            <div class="copyright-info">
+                <p>&copy; NicoMace, Inc 2023. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="notes.js"></script>
+    <script src="cordova.js"></script>
+
 </body>
 </html>

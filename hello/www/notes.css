@@ -1,0 +1,222 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.dark-mode body {
+    background-color: #333;
+    color: #fff;
+}
+
+li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-wrap: break-word;
+    position: relative;
+}
+
+li > i {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.dark-mode li > i {
+    color: #fff;
+}
+
+li.note-item {
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    min-height: 60px;
+    word-wrap: break-word;
+}
+
+.dark-mode li.note-item {
+    background-color: #444; /* Couleur de fond pour les notes en mode sombre */
+}
+
+.note-item i {
+    cursor: pointer;
+}
+
+.edit-icon {
+    margin-right: 20px;
+}
+
+.delete-icon {
+    margin-left: 20px;
+}
+
+#notesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.container {
+    max-width: 800px;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.dark-mode .container{
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond semi-transparente */
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo span {
+    font-size: 1.5em;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none; /* Caché par défaut pour les tailles d'écran normales */
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-left: auto; /* Place la lune à l'extrême droite */
+}
+
+/* Ajoute le style du mode sombre */
+.dark-mode {
+    background-color: #333; /* Fond sombre */
+    color: #fff; /* Texte blanc */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-list {
+        display: none; /* Caché par défaut pour les tailles d'écran réduites */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-list.show {
+        display: flex; /* Affiché lorsque le menu est ouvert */
+    }
+
+    .nav-list li {
+        margin: 10px;
+    }
+
+    .menu-toggle {
+        display: block; /* Affiché pour les tailles d'écran réduites */
+    }
+}
