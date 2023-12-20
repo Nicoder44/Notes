@@ -20,6 +20,17 @@ if ('getBattery' in navigator) {
   console.log("L'API Battery Status n'est pas prise en charge sur ce navigateur.");
 }
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    var vibrationButton = document.getElementById('vibrationButton');
+
+    vibrationButton.addEventListener('click', function () {
+        // Vibre pendant 1000 millisecondes (1 seconde)
+        navigator.vibrate(3000);
+    });
+}
+
 function updateBatteryUI(battery) {
     var batteryBar = document.getElementById('battery-bar');
     var batteryLevelText = document.getElementById('battery-level-text');
