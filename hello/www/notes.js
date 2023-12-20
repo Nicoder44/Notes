@@ -20,6 +20,20 @@ if ('getBattery' in navigator) {
   console.log("L'API Battery Status n'est pas prise en charge sur ce navigateur.");
 }
 
+window.addEventListener("orientationchange", function(){
+
+    orientation = screen.orientation.type;
+    var orientationMessage = document.getElementById("orientationMessage");
+    console.log(orientation); // e.g. portrait
+    if (orientation == 0){
+        orientationMessage.textContent = "En mode Portrait";
+    }
+    else{
+        orientationMessage.textContent = "En mode Paysage";
+    }
+
+});
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -29,6 +43,18 @@ function onDeviceReady() {
         // Vibre pendant 1000 millisecondes (1 seconde)
         navigator.vibrate(3000);
     });
+}
+var isOrientationLocked = false;
+function toggleOrientationLock() {
+    if (isOrientationLocked) {
+        // Déverrouille l'orientation
+        screen.orientation.unlock();
+        isOrientationLocked = false;
+    } else {
+        // Verrouille l'orientation actuelle
+        screen.orientation.lock(screen.orientation.type);
+        isOrientationLocked = true;
+    }
 }
 
 function updateBatteryUI(battery) {

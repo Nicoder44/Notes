@@ -14,8 +14,10 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^12.0.1",
+    "cordova-plugin-screen-orientation": "^3.0.4",
     "cordova-plugin-statusbar": "^4.0.0",
-    "cordova-plugin-vibration": "^3.1.1"
+    "cordova-plugin-vibration": "^3.1.1",
+    "es6-promise-plugin": "^4.2.2"
   },
   "cordova": {
     "platforms": [
@@ -23,7 +25,8 @@
     ],
     "plugins": {
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-vibration": {}
+      "cordova-plugin-vibration": {},
+      "cordova-plugin-screen-orientation": {}
     }
   }
 }
