@@ -1,6 +1,44 @@
 const body = document.body;
 const container = document.container;
 
+if ('getBattery' in navigator) {
+    navigator.getBattery().then(function(battery) {
+
+        // Met à jour la barre de batterie initiale
+        updateBatteryUI(battery);
+
+        // Écoute les événements de mise à jour de l'état de la batterie
+        battery.addEventListener('chargingchange', function() {
+            updateBatteryUI(battery);
+        });
+
+        battery.addEventListener('levelchange', function() {
+            updateBatteryUI(battery);
+        });
+    });
+} else {
+  console.log("L'API Battery Status n'est pas prise en charge sur ce navigateur.");
+}
+
+function updateBatteryUI(battery) {
+    var batteryBar = document.getElementById('battery-bar');
+    var batteryLevelText = document.getElementById('battery-level-text');
+
+    if (batteryBar) {
+        var batteryLevel = battery.level * 10;
+        console.log(batteryBar);
+        batteryBar.style.width = batteryLevel + '%';
+        batteryLevelText.textContent = batteryLevel * 10 + '%';
+
+        // Tu peux également ajouter une classe CSS pour changer la couleur de la barre en fonction du niveau de la batterie
+        if (batteryLevel <= 20) {
+            batteryBar.classList.add('low-battery');
+        } else {
+            batteryBar.classList.remove('low-battery');
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     document.body.style.paddingTop = (window.innerHeight / 11) + 'px';
     // Charger les notes existantes depuis le localStorage
