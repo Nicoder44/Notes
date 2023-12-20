@@ -220,3 +220,34 @@ footer {
         display: block; /* Affiché pour les tailles d'écran réduites */
     }
 }
+
+#battery-bar {
+    height: 10px;
+    background-color: green; /* couleur de fond de la barre de batterie */
+    width: 10%; /* largeur initiale, tu peux ajuster selon tes besoins */
+    transition: width 0.5s; /* animation de transition pour une mise à jour en douceur */
+    position: relative;
+}
+
+.low-battery {
+    background-color: #FF5722; /* changer la couleur pour indiquer une batterie faible */
+}
+
+#battery-level-text {
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Couleur du texte */
+}
+
+#battery-info {
+    position: absolute;
+    top: -20px; /* Ajuste la position verticale en fonction de tes préférences */
+    left: 0%;
+
+    color: #333; /* Couleur du texte */
+    font-weight: bold;
+    font-size:8px;
+}
